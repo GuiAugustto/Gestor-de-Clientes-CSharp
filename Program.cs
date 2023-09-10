@@ -11,13 +11,14 @@ class Cliente
         Historico,
         Sair
     }
-
-    [Serializable] // Para salvar os dados em arquivos
+    
+    // Para salvar os dados em arquivos
+    [Serializable] 
     struct Info
     {
-        public string nome;
-        public string email;
-        public string senha;
+        public string nome { get; set; }
+        public string email { get; set; }
+        public string senha { get; set; }
     }
 
     // Vincula a list ao struct Info
@@ -47,10 +48,11 @@ class Cliente
                 VerHistorico();
                 break;
             case Opcao.Sair:
-                // Como nada está acontecendo o programa fecha
+                Console.WriteLine("Fechando programa...");
                 break;
             default:
                 Console.WriteLine("Opção inválida!");
+                Thread.Sleep(2000);
                 Main();
                 break;
         }
