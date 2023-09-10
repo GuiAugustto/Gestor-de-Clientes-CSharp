@@ -48,10 +48,10 @@ class Cliente
                 VerHistorico();
                 break;
             case Opcao.Sair:
-                Console.WriteLine("Fechando programa...");
+                Console.WriteLine("\nFechando programa...\n");
                 break;
             default:
-                Console.WriteLine("Opção inválida!");
+                Console.WriteLine("\nOpção inválida!");
                 Thread.Sleep(2000);
                 Main();
                 break;
@@ -116,10 +116,10 @@ class Cliente
 
         /* A variável indice é inicializada com o valor 0, por isso,
         colocamos seu valor com -1 para não retornar nulo */
-        int id = int.Parse(Console.ReadLine()!);
+        int id = int.Parse(Console.ReadLine()!) - 1;
 
         // Verifica se ID é maior que 0 se o ID compreende o tamanho da lista
-        if (id > 0 && id < infos.Count)
+        if (id >= 0 && id < infos.Count)
         {
             infos.RemoveAt(id);
             Console.WriteLine($"\nO ID {id} foi removido com sucesso!");
@@ -182,7 +182,7 @@ class Cliente
         }
         else
         {
-            Console.WriteLine("Não há nada registrado...");
+            Console.WriteLine("Não há nada registrado...\n");
         }
 
         EscolhaUsuario();
@@ -214,7 +214,7 @@ class Cliente
 
     public static void SalvarNoArquivo()
     {
-        FileStream stream = new("dados.txt", FileMode.OpenOrCreate);
+        FileStream stream = new("dados.txt", FileMode.Create);
 
         // Torna o arquivo binário e salva os dados no arquivo
         JsonSerializer.Serialize(stream, infos);
